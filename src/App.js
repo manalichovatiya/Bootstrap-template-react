@@ -9,7 +9,7 @@ import Product from './components/Users/Product';
 import List from './components/Admin/List';
 
 function App() {
-  const role = "user"
+  const role = "admin"
   if (role === "admin") {
     return (
       <>
