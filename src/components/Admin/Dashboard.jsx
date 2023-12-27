@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 const Dashboard = () => {
   const [dash, setdash] = useState()
   const [view, setview] = useState({})
-  const [index, setindex] = useState({})
+  const [index, setindex] = useState()
   const product = useRef()
   const price = useRef()
 
@@ -25,6 +25,7 @@ const Dashboard = () => {
     }
     arr.push(list)
     localStorage.setItem("detail", JSON.stringify(arr));
+    console.log(arr,"add data checking ");
     setdash(arr);
     Swal.fire({
       icon: 'success',
@@ -64,10 +65,10 @@ const Dashboard = () => {
   const handle = (e) => {
     setview({ ...view, [e.target.name]: e.target.value })
   }
-  const saveData =()=>{
+  const saveData = () => {
     console.log(view);
-    arr.splice(index,1,view);
-    localStorage.setItem('detail',JSON.stringify(arr))
+    arr.splice(index, 1, view);
+    localStorage.setItem('detail', JSON.stringify(arr))
     setdash([...arr])
     Swal.fire({
       icon: 'success',
@@ -97,7 +98,7 @@ const Dashboard = () => {
                 <h5 className="card-title">{val.product}</h5>
                 <p className="card-text">{val.price}</p>
                 <button className="btn btn-primary" onClick={() => deleteData(ind)}>Delete</button>
-                <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModalCenter" onClick={()=>updateData(val,ind)}>Update</button>
+                <button type="button" class="btn btn-primary ml-3" data-toggle="modal" data-target="#exampleModalCenter" onClick={() => updateData(val, ind)}>Update</button>
               </div>
             </div>
           </div>
@@ -113,8 +114,8 @@ const Dashboard = () => {
               </button>
             </div>
             <div class="modal-body">
-              <input type="text" className="form-control" placeholder="Enter product" value={view.product} name="product" onChange={(e)=>handle(e)} />
-              <input type="number" className="form-control" placeholder="Enter product price" value={view.price} name='price' onChange={(e)=>handle(e)} />
+            <input type="text" className="form-control" placeholder="Enter product" value={view.product} name="product" onChange={(e) => handle(e)} />
+            <input type="number" className="form-control" placeholder="Enter product price" value={view.price} name='price' onChange={(e) => handle(e)} />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
