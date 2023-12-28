@@ -25,7 +25,6 @@ const Dashboard = () => {
     }
     arr.push(list)
     localStorage.setItem("detail", JSON.stringify(arr));
-    console.log(arr,"add data checking ");
     setdash(arr);
     Swal.fire({
       icon: 'success',
@@ -66,7 +65,6 @@ const Dashboard = () => {
     setview({ ...view, [e.target.name]: e.target.value })
   }
   const saveData = () => {
-    console.log(view);
     arr.splice(index, 1, view);
     localStorage.setItem('detail', JSON.stringify(arr))
     setdash([...arr])
